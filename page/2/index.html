@@ -25,26 +25,26 @@
   </script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="zhiwyan">
-<meta property="og:url" content="http://example.com/tags/%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="zhiwyan">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="zhiwyan">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/%E7%B3%BB%E7%BB%9F/">
+<link rel="canonical" href="http://example.com/page/2/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'en'
   };
 </script>
-<title>Tag: 系统 | zhiwyan</title>
+<title>zhiwyan</title>
   
 
 
@@ -243,70 +243,100 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner index posts-expand">
+
+    
 
 
+<div class="post-block">
   
   
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">系统
-          <small>Tag</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/17/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="zhiwyan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhiwyan">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/17/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/" class="post-title-link" itemprop="url">tcp三次握手</a>
         </h2>
-      </div>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-17 14:16:59" itemprop="dateCreated datePublished" datetime="2021-03-17T14:16:59+08:00">2021-03-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-11 22:08:46" itemprop="dateModified" datetime="2021-04-11T22:08:46+08:00">2021-04-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="tcp三次握手的过程"><a href="#tcp三次握手的过程" class="headerlink" title="tcp三次握手的过程"></a>tcp三次握手的过程</h3><ol>
+<li>客户端向服务器端发送请求建立新连接的SYN报文，随后客户端进入SYN-SENT阶段。</li>
+<li>服务器端收到来自客户端的报文后，结束LISTEN阶段，并返回服务端能正常接收客户端发送的数据，并同意创建新链接的SYN和ACK报文，随后服务端进入SYN-RCVD阶段。</li>
+<li>客户端接受到来自服务端的报文后，明确了从客户端到服务端的数据传输是正常的，结束SYN-SENT阶段。并返回确认收到服务端同意连接的ACK报文，随后客户端进入ESTABLISHED阶段。服务端收到来自客户端的报文，明确了服务端到客户端的数据传输是正常的，结束SYN-RCVD阶段，随后服务端进入ESTABLSHED阶段。<br>此后客户端跟服务端正常数据传输，这tcp三次握手的过程。</li>
+</ol>
+<h3 id="tcp建立连接一定需要三次握手的原因"><a href="#tcp建立连接一定需要三次握手的原因" class="headerlink" title="tcp建立连接一定需要三次握手的原因"></a>tcp建立连接一定需要三次握手的原因</h3><ol>
+<li>完全建立起连接的标志是：<br> 1.客户端得知自己和服务器端的收信息和发信息都没有问题<br> 2.服务器端得知自己和客户端的收信息和发信息都没有问题</li>
+<li>分析一下每次挥手客户端跟服务端知道的情况<br> 1.当客户端第一次向服务器发送建立连接的报文的时候，服务端收到报文后。服务端知道：客户端的发送和服务端的接收<br>是没有问题。此时客户端什么都不知道<br> 2.当服务端向客户端发送确认收到报文，并同意创建新链接的时候。客户端知道：客户端的发送和客户端的接受没有问题，也知道服务器端的发送和接受是没有问题的。此时服务端只知道：客户端的发送和服务端的接收<br>是没有问题<br> 3.当客户向服务器端返回确认收到服务端同意连接的报文的时候。服务端知道：服务端的发送和客户端的接收是没有问题的，加上第一次握手的时候，此时服务器知道服务端和客户端的发送和接收都是没有问题的。<br>直到客户端和服务器端，都知道自己和对方的接受信息和发送信息都联通，此时建立的会话才是双向联通的。</li>
+</ol>
+<p>在通信的过程中，发送数据会都会分配一个序号。三步握手的过程，主要是为了互相确认双方的起始序列号。<br>如果只进行两次握手，客户端发送链接请求及起始序列号seq = x, 收到 服务器端的起始序列号seq = y及对客户端序列号seq= x 的确认。此时，双方就 客户端的起始序列号达成了共识。此时，并没有对服务器的起始序列号达成共识，所以就需要进行第三次握手。对B的起始序列号达成共识，不能保证通信的可靠。</p>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-12T10:50:09+08:00"
-              content="2021-04-12">
-          04-12
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/12/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%A4%BA%E4%BE%8B/" itemprop="url">
-            <span itemprop="name">系统调用示例</span>
-          </a>
-      </div>
-
+    <footer class="post-footer">
+        <div class="post-eof"></div>
       
-    </header>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-09T18:55:09+08:00"
-              content="2021-04-09">
-          04-09
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" itemprop="url">
-            <span itemprop="name">系统调用</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-    </div>
-  </div>
-  
-  
-  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 <script>
